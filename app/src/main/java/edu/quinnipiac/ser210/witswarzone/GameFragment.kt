@@ -1,25 +1,31 @@
 package edu.quinnipiac.ser210.witswarzone
 
 import android.os.Bundle
+import android.text.Editable
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import kotlin.random.Random
 
 class GameFragment : Fragment()
 {
     lateinit var viewModel: QuestionsViewModel
     lateinit var submitButton: Button
     lateinit var questionLabel: TextView
+    lateinit var scoreLabel: TextView
+    lateinit var userAnswer: EditText
     lateinit var questions: ArrayList<Question>
 
-    var index: Int = 1
+
+    var questionNum: Int = 1
+    var answer: String = ""
+    var score: Int = 0
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
     {
@@ -30,13 +36,35 @@ class GameFragment : Fragment()
 
         submitButton = view.findViewById(R.id.submit_button)
         questionLabel = view.findViewById(R.id.question_label)
+        scoreLabel = view.findViewById(R.id.score_label)
+        userAnswer = view.findViewById(R.id.userAnswer)
+
+        scoreLabel.text = "Score: $score"
 
         submitButton.setOnClickListener{
-            if(index < questions.size)
+
+            if(questionNum < questions.size)
             {
-                questionLabel.text = questions[index].question
-                index++
+                val nextQuestion: Question = questions[questionNum]
+                val isCorrect: Boolean = userAnswer.text.toString().lowercase().trim()
+                    .equals(answer)
+
+                println("user: " + userAnswer.text.toString().lowercase().trim())
+                println("answer: " + answer)
+
+                questionLabel.text = nextQuestion.question
+                answer = nextQuestion.answer.lowercase().trim()
+                questionNum++
+
+                if (isCorrect)
+                {
+                    score++
+                    scoreLabel.text = "Score: $score"
+                }
+
+                println("CORRECT: " + isCorrect)
             }
+            userAnswer.setText("")
         }
 
         return view
@@ -50,6 +78,7 @@ class GameFragment : Fragment()
         viewModel.getQuestionsObserver().observe(viewLifecycleOwner) { newValue ->
             questions = newValue!!
             questionLabel.text = questions[0].question
+            answer = questions[0].answer.lowercase().trim()
         }
     }
 

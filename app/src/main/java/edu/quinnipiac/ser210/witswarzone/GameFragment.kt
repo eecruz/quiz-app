@@ -61,7 +61,9 @@ class GameFragment : Fragment()
                 {
                     score++
                     scoreLabel.text = "Score: $score"
+                    Toast.makeText(requireActivity(), "Correct!!", Toast.LENGTH_LONG).show()
                 }
+                else Toast.makeText(requireActivity(), "Incorrect :(", Toast.LENGTH_LONG).show()
             }
             userAnswer.setText("")
         }

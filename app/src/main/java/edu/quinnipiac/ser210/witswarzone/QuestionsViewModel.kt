@@ -7,19 +7,26 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class QuestionsViewModel: ViewModel() {
-    var questionsLiveData: MutableLiveData<TriviaQuestions?> = MutableLiveData()
-    var triviaQuestions: TriviaQuestions = TriviaQuestions(ArrayList())
-    fun getCreateTextSummaryObserver(): MutableLiveData<TriviaQuestions?> {
+    var questionsLiveData: MutableLiveData<ArrayList<Question>?> = MutableLiveData()
+    var triviaQuestions: TriviaQuestions = TriviaQuestions(ArrayList(1))
+
+    init {
+        val q: Question = Question("", "Loading Question...", "")
+        triviaQuestions.items.add(q)
+    }
+
+    // live data representation for summary value
+    fun getQuestionsObserver(): MutableLiveData<ArrayList<Question>?> {
         return questionsLiveData
     }
 
     fun setLiveData()
     {
-        questionsLiveData.value = triviaQuestions
+        questionsLiveData.value = triviaQuestions.items
     }
 
     // gets questions from data class
-    fun getQuestions(): List<Question>
+    fun getQuestions(): ArrayList<Question>
     {
         return triviaQuestions.items
     }
@@ -39,8 +46,8 @@ class QuestionsViewModel: ViewModel() {
 
             override fun onResponse(call: Call<List<Question>>, response: Response<List<Question>>) {
                 if (response.isSuccessful) {
-                    triviaQuestions.items = response.body() as List<Question>
-                    questionsLiveData.postValue(triviaQuestions)
+                    triviaQuestions.items = response.body() as ArrayList<Question>
+                    questionsLiveData.postValue(triviaQuestions.items)
                     println("SUCCESS")
 
                 } else {

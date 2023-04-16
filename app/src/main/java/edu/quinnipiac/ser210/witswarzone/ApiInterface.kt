@@ -9,7 +9,7 @@ import retrofit2.http.*
 
 interface ApiInterface
 {
-    // retrieves summary from API
+    // retrieves questions from API
     @Headers("Accept:application/json", "Content-Type:application/json",
         "X-RapidAPI-Key:d859bd9d8emsh7665e099afce6e3p13227djsnf07373f301cb",
         "X-RapidAPI-Host:trivia-by-api-ninjas.p.rapidapi.com")

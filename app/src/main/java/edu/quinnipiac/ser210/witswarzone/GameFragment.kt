@@ -19,6 +19,7 @@ class GameFragment : Fragment()
     lateinit var submitButton: Button
     lateinit var questionLabel: TextView
     lateinit var scoreLabel: TextView
+    lateinit var questionNumLabel: TextView
     lateinit var userAnswer: EditText
     lateinit var questions: ArrayList<Question>
 
@@ -38,6 +39,7 @@ class GameFragment : Fragment()
         questionLabel = view.findViewById(R.id.question_label)
         scoreLabel = view.findViewById(R.id.score_label)
         userAnswer = view.findViewById(R.id.userAnswer)
+        questionNumLabel = view.findViewById(R.id.question_number_label)
 
         scoreLabel.text = "Score: $score"
 
@@ -46,13 +48,12 @@ class GameFragment : Fragment()
             if(questionNum < questions.size)
             {
                 val nextQuestion: Question = questions[questionNum]
+                val displayNum: Int = questionNum + 1
                 val isCorrect: Boolean = userAnswer.text.toString().lowercase().trim()
                     .equals(answer)
 
-                println("user: " + userAnswer.text.toString().lowercase().trim())
-                println("answer: " + answer)
-
                 questionLabel.text = nextQuestion.question
+                questionNumLabel.text = "Question $displayNum out of ${questions.size}"
                 answer = nextQuestion.answer.lowercase().trim()
                 questionNum++
 
@@ -61,8 +62,6 @@ class GameFragment : Fragment()
                     score++
                     scoreLabel.text = "Score: $score"
                 }
-
-                println("CORRECT: " + isCorrect)
             }
             userAnswer.setText("")
         }
@@ -78,6 +77,7 @@ class GameFragment : Fragment()
         viewModel.getQuestionsObserver().observe(viewLifecycleOwner) { newValue ->
             questions = newValue!!
             questionLabel.text = questions[0].question
+            questionNumLabel.text = "Question 1 out of ${questions.size}"
             answer = questions[0].answer.lowercase().trim()
         }
     }

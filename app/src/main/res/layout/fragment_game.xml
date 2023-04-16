@@ -71,7 +71,7 @@
         android:id="@+id/question_number_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Question _ of _"
+        android:text="Question 0 of 0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.15"

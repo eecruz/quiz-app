@@ -1,9 +1,5 @@
 package edu.quinnipiac.ser210.witswarzone
 
-import android.content.Context
-import android.graphics.drawable.Drawable
-import androidx.core.content.ContextCompat
-
 enum class Category(val display: String, val apiInput: String, val drawableID: Int)
 {
     GENERAL("General", "GENERAL", R.drawable.general),
@@ -16,12 +12,8 @@ enum class Category(val display: String, val apiInput: String, val drawableID: I
     HISTORYHOLIDAYS("History & Holidays", "HISTORYHOLIDAYS", R.drawable.history),
     ENTERTAINMENT("Entertainment", "ENTERTAINMENT", R.drawable.entertainment),
     TOYSGAMES("Toys & Games", "TOYSGAMES", R.drawable.toys),
-    MUSIC("MUSIC", "MUSIC", R. drawable.music),
+    MUSIC("Music", "MUSIC", R. drawable.music),
     MATHEMATICS("Mathematics", "MATHEMATICS", R.drawable.math),
     RELIGIONMYTHOLOGY("Religion & Mythology", "RELIGIONMYTHOLOGY", R.drawable.religion),
     SPORTSLEISURE("Sports & Leisure", "SPORTSLEISURE", R.drawable.sports);
-
-    fun getDrawable(context: Context): Drawable? {
-        return ContextCompat.getDrawable(context, drawableID)
-    }
 }

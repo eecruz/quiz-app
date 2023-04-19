@@ -10,14 +10,28 @@
         android:id="@+id/gameFragment"
         android:name="edu.quinnipiac.ser210.witswarzone.GameFragment"
         android:label="fragment_game"
-        tools:layout="@layout/fragment_game" />
+        tools:layout="@layout/fragment_game" >
+        <argument
+            android:name="selected_category"
+            app:argType="string"
+            android:defaultValue="general" />
+    </fragment>
     <fragment
         android:id="@+id/homeFragment"
         android:name="edu.quinnipiac.ser210.witswarzone.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_homeFragment_to_gameFragment"
+            android:id="@+id/action_homeFragment_to_listFragment"
+            app:destination="@id/listFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listFragment"
+        android:name="edu.quinnipiac.ser210.witswarzone.ListFragment"
+        android:label="fragment_list"
+        tools:layout="@layout/fragment_list" >
+        <action
+            android:id="@+id/action_listFragment_to_gameFragment"
             app:destination="@id/gameFragment" />
     </fragment>
 </navigation>

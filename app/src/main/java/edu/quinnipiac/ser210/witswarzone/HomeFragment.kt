@@ -17,7 +17,7 @@ class HomeFragment : Fragment() {
 
         val button = view.findViewById<Button>(R.id.button_go)
         button.setOnClickListener{
-            val action = HomeFragmentDirections.actionHomeFragmentToGameFragment()
+            val action = HomeFragmentDirections.actionHomeFragmentToListFragment()
             this.findNavController().navigate(action)
         }
 

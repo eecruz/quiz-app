@@ -11,7 +11,7 @@ class QuestionsViewModel: ViewModel() {
     var triviaQuestions: TriviaQuestions = TriviaQuestions(ArrayList(1))
 
     init {
-        val q: Question = Question("", "Loading Question...", "")
+        val q = Question("", "Loading Question...", "")
         triviaQuestions.items.add(q)
     }
 
@@ -32,10 +32,10 @@ class QuestionsViewModel: ViewModel() {
     }
 
     // calls API to generate questions
-    fun generateQuestions() {
+    fun generateQuestions(category: String) {
         val retroService = ApiInterface.create()
 
-        val call = retroService.getQuestions("general", 6)
+        val call = retroService.getQuestions(category, 10)
 
         // handles API call on concurrent thread so as not to slow down UI
         call.enqueue(object : Callback<List<Question>> {

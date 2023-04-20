@@ -2,4 +2,9 @@
     <string name="app_name">WitsWarzone</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="logo">Wit\'s Warzone Logo</string>
+    <string name="username">Username</string>
+    <string name="homeDescription">Wit\'s Warzone is a competitive trivia game where you can compare your highscores against others in various quiz categories and lengths.</string>
+    <string name="guest">Continue as guest</string>
+    <string name="enter">Enter</string>
 </resources>

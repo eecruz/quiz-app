@@ -9,10 +9,15 @@ import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 
 var categoryList : ArrayList<Category> = ArrayList()
+var user_name: String = "Guest"
 
-class RecyclerAdapter(var navController: NavController)
-    :RecyclerView.Adapter<RecyclerAdapter.MyViewHolder>()
+class ListAdapter(var navController: NavController, username: String)
+    :RecyclerView.Adapter<ListAdapter.MyViewHolder>()
 {
+    init {
+        user_name = username
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder
     {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item,parent,false)
@@ -57,7 +62,7 @@ class RecyclerAdapter(var navController: NavController)
 
         init {
             itemView.setOnClickListener {
-                val action = ListFragmentDirections.actionListFragmentToGameFragment(categoryList[pos].apiInput)
+                val action = ListFragmentDirections.actionListFragmentToGameFragment(categoryList[pos].apiInput, user_name)
                 navController.navigate(action)
 
             }

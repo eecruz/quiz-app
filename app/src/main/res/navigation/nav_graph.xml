@@ -15,6 +15,13 @@
             android:name="selected_category"
             app:argType="string"
             android:defaultValue="general" />
+        <action
+            android:id="@+id/action_gameFragment_to_resultsFragment"
+            app:destination="@id/resultsFragment" />
+        <argument
+            android:name="user_name"
+            app:argType="string"
+            android:defaultValue="Guest" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
@@ -33,5 +40,30 @@
         <action
             android:id="@+id/action_listFragment_to_gameFragment"
             app:destination="@id/gameFragment" />
+        <argument
+            android:name="user_name"
+            app:argType="string"
+            android:defaultValue="Guest" />
     </fragment>
+    <fragment
+        android:id="@+id/resultsFragment"
+        android:name="edu.quinnipiac.ser210.witswarzone.ResultsFragment"
+        android:label="fragment_results"
+        tools:layout="@layout/fragment_results" >
+        <action
+            android:id="@+id/action_resultsFragment_to_highScoreFragment"
+            app:destination="@id/highScoreFragment" />
+        <argument
+            android:name="user_name"
+            app:argType="string"
+            android:defaultValue="Guest" />
+        <argument
+            android:name="score"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
+    <fragment
+        android:id="@+id/highScoreFragment"
+        android:name="edu.quinnipiac.ser210.witswarzone.HighScoreFragment"
+        android:label="HighScoreFragment" />
 </navigation>

@@ -15,7 +15,7 @@
 
         <TextView
             android:id="@+id/chooseCategoryLabel"
-            android:text="Choose Category\n"
+            android:text="High Scores\n"
             android:textSize="35sp"
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
@@ -27,6 +27,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="10dp"
-        android:layout_weight="0.80" />
+        android:layout_weight="0.8" />
 
 </LinearLayout>

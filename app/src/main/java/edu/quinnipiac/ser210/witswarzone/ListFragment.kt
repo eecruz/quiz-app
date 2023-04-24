@@ -14,7 +14,19 @@ import androidx.recyclerview.widget.RecyclerView
 class ListFragment : Fragment() {
 
     lateinit var recyclerView: RecyclerView
-    lateinit var recyclerAdapter: RecyclerAdapter
+    lateinit var recyclerAdapter: ListAdapter
+
+    var username: String = "Guest"
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val bundle = arguments
+        if (bundle == null)
+            return
+
+        username = ListFragmentArgs.fromBundle(bundle).userName
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
     {
@@ -28,7 +40,7 @@ class ListFragment : Fragment() {
     {
         super.onViewCreated(view, savedInstanceState)
         recyclerView = view.findViewById(R.id.recyclerview)
-        recyclerAdapter = RecyclerAdapter(Navigation.findNavController(view))
+        recyclerAdapter = ListAdapter(Navigation.findNavController(view), username)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = recyclerAdapter
 

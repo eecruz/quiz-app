@@ -11,8 +11,10 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 
 class GameFragment : Fragment()
 {
@@ -25,6 +27,7 @@ class GameFragment : Fragment()
     lateinit var questions: ArrayList<Question>
 
 
+    var userName: String = "Guest"
     var category: String = "general"
     var questionNum: Int = 1
     var answer: String = ""
@@ -41,6 +44,7 @@ class GameFragment : Fragment()
         }
 
         category = GameFragmentArgs.fromBundle(bundle).selectedCategory
+        userName = GameFragmentArgs.fromBundle(bundle).userName
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
@@ -79,6 +83,17 @@ class GameFragment : Fragment()
                     Toast.makeText(requireActivity(), "Correct!!", Toast.LENGTH_LONG).show()
                 }
                 else Toast.makeText(requireActivity(), "Incorrect :(", Toast.LENGTH_LONG).show()
+            }
+            else if(!submitButton.text.equals("View Score"))
+            {
+                questionLabel.text = "Quiz Done!! Click button to view results."
+                submitButton.text = "View Score"
+                userAnswer.isVisible = false
+            }
+            else
+            {
+                val action = GameFragmentDirections.actionGameFragmentToResultsFragment(userName, score)
+                this.findNavController().navigate(action)
             }
             userAnswer.setText("")
         }

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.util.Log
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 
 class HomeFragment : Fragment() {
@@ -24,11 +25,14 @@ class HomeFragment : Fragment() {
         buttonGo.setOnClickListener{
             if(editText.text != null) {
                 username = editText.text.toString()
+                val action = HomeFragmentDirections.actionHomeFragmentToListFragment(username)
+                this.findNavController().navigate(action)
             }
-            //Log.d("TAG", username)
-            val action = HomeFragmentDirections.actionHomeFragmentToListFragment()
-            this.findNavController().navigate(action)
+            else
+                Toast.makeText(requireActivity(), "Please enter your name first or continue as guest",
+                    Toast.LENGTH_LONG).show()
         }
+
         val buttonGuest = view.findViewById<Button>(R.id.btn_guest)
         buttonGuest.setOnClickListener{
             //Log.d("TAG", username)

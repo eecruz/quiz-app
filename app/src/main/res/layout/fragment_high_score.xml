@@ -5,28 +5,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:weightSum="1"
     tools:context=".MainActivity">
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.2" >
+        android:layout_height="140dp"
+        android:orientation="vertical" >
 
         <TextView
-            android:id="@+id/chooseCategoryLabel"
+            android:id="@+id/highscoresLabel"
             android:text="High Scores\n"
             android:textSize="35sp"
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-    </FrameLayout>
+
+        <Button
+            android:id="@+id/button_clearScores"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Clear Scores" />
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="10dp"
-        android:layout_weight="0.8" />
+        android:layout_marginTop="10dp" />
 
 </LinearLayout>

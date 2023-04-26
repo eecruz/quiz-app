@@ -13,18 +13,12 @@ class ScoreViewModel(private val highScoreDao: HighScoreDao): ViewModel()
         insertScore(newScore)
     }
 
-//    fun getAllScores(): List<HighScore>
-//    {
-//        var scoreList: List<HighScore> = ArrayList()
-//        viewModelScope.launch {
-//            highScoreDao.getAllScores().collect{
-//                value -> scoreList = value
-//            }
-//        }
-//
-//        println("SCORESLIST: $scoreList")
-//        return scoreList
-//    }
+    fun deleteAllScores()
+    {
+        viewModelScope.launch {
+            highScoreDao.deleteAllScores()
+        }
+    }
 
     private fun insertScore(newScore: HighScore)
     {

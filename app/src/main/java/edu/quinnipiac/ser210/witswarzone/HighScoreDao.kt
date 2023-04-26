@@ -15,6 +15,9 @@ interface HighScoreDao
     @Delete
     suspend fun delete(highscore: HighScore)
 
+    @Query("DELETE FROM highscores")
+    suspend fun deleteAllScores()
+
     @Query("SELECT * from highscores WHERE _id =:id")
     fun getScore(id: Int): Flow<HighScore>
 

@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 var categoryList : ArrayList<Category> = ArrayList()
 var user_name: String = "Guest"
 
-class ListAdapter(var navController: NavController, username: String)
-    :RecyclerView.Adapter<ListAdapter.MyViewHolder>()
+class CategoryListAdapter(var navController: NavController, username: String)
+    :RecyclerView.Adapter<CategoryListAdapter.MyViewHolder>()
 {
     init {
         user_name = username
@@ -20,7 +20,7 @@ class ListAdapter(var navController: NavController, username: String)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder
     {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item,parent,false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.category_list_item,parent,false)
         return MyViewHolder(view)
     }
 

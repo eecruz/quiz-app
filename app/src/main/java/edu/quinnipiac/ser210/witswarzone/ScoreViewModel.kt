@@ -1,17 +1,30 @@
 package edu.quinnipiac.ser210.witswarzone
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import kotlinx.coroutines.launch
 
 class ScoreViewModel(private val highScoreDao: HighScoreDao): ViewModel()
 {
+    val allScores: LiveData<List<HighScore>> = highScoreDao.getAllScores().asLiveData()
+
     fun addNewScore(name: String, score: String)
     {
         val newScore = getNewScoreEntry(name, score)
         insertScore(newScore)
     }
+
+//    fun getAllScores(): List<HighScore>
+//    {
+//        var scoreList: List<HighScore> = ArrayList()
+//        viewModelScope.launch {
+//            highScoreDao.getAllScores().collect{
+//                value -> scoreList = value
+//            }
+//        }
+//
+//        println("SCORESLIST: $scoreList")
+//        return scoreList
+//    }
 
     private fun insertScore(newScore: HighScore)
     {

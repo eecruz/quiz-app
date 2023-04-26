@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 class ListFragment : Fragment() {
 
     lateinit var recyclerView: RecyclerView
-    lateinit var recyclerAdapter: ListAdapter
+    lateinit var recyclerAdapter: CategoryListAdapter
 
     var username: String = "Guest"
 
@@ -40,7 +40,7 @@ class ListFragment : Fragment() {
     {
         super.onViewCreated(view, savedInstanceState)
         recyclerView = view.findViewById(R.id.recyclerview)
-        recyclerAdapter = ListAdapter(Navigation.findNavController(view), username)
+        recyclerAdapter = CategoryListAdapter(Navigation.findNavController(view), username)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = recyclerAdapter
 

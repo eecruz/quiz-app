@@ -5,5 +5,5 @@ import androidx.room.RoomDatabase
 
 class HighScoreApplication: Application()
 {
-    val database: RoomDatabase by lazy {HighScoreRoomDatabase.getDatabase(this)}
+    val database: HighScoreRoomDatabase by lazy {HighScoreRoomDatabase.getDatabase(this)}
 }

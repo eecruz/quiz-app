@@ -23,7 +23,7 @@ class HomeFragment : Fragment() {
 
         val buttonGo = view.findViewById<Button>(R.id.button_go)
         buttonGo.setOnClickListener{
-            if(editText.text != null) {
+            if(editText.text.trim().isNotBlank()) {
                 username = editText.text.toString()
                 val action = HomeFragmentDirections.actionHomeFragmentToListFragment(username)
                 this.findNavController().navigate(action)

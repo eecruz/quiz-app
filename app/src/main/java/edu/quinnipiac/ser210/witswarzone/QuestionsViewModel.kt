@@ -32,10 +32,10 @@ class QuestionsViewModel: ViewModel() {
     }
 
     // calls API to generate questions
-    fun generateQuestions(category: String) {
+    fun generateQuestions(category: String, length: Int) {
         val retroService = ApiInterface.create()
 
-        val call = retroService.getQuestions(category, 10)
+        val call = retroService.getQuestions(category, length)
 
         // handles API call on concurrent thread so as not to slow down UI
         call.enqueue(object : Callback<List<Question>> {

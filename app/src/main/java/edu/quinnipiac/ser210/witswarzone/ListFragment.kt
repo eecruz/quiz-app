@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.RadioGroup
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,8 +16,10 @@ class ListFragment : Fragment() {
 
     lateinit var recyclerView: RecyclerView
     lateinit var recyclerAdapter: CategoryListAdapter
+    lateinit var rGroup: RadioGroup
 
     var username: String = "Guest"
+    var length: Int = 10
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,11 +42,25 @@ class ListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)
     {
         super.onViewCreated(view, savedInstanceState)
+        rGroup = view.findViewById(R.id.lengthRadioGroup)
+        rGroup.setOnCheckedChangeListener {_,checkedId ->
+            rGroup.check(checkedId)
+            length = when (rGroup.checkedRadioButtonId) {
+                R.id.radio10 -> { 10 }
+                R.id.radio15 -> { 15 }
+                else -> { 30 }
+            }
+            updateLength(view,length)
+        }
         recyclerView = view.findViewById(R.id.recyclerview)
-        recyclerAdapter = CategoryListAdapter(Navigation.findNavController(view), username)
+        recyclerAdapter = CategoryListAdapter(Navigation.findNavController(view), username, length)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = recyclerAdapter
 
         recyclerAdapter.setCategoryListItems()
+    }
+
+    private fun updateLength(view: View, newLength: Int) {
+        recyclerAdapter = CategoryListAdapter(Navigation.findNavController(view), username, newLength)
     }
 }

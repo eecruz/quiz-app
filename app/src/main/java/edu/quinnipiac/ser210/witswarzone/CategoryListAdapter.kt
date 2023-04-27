@@ -10,12 +10,14 @@ import androidx.recyclerview.widget.RecyclerView
 
 var categoryList : ArrayList<Category> = ArrayList()
 var user_name: String = "Guest"
+var quiz_length: Int = 10
 
-class CategoryListAdapter(var navController: NavController, username: String)
+class CategoryListAdapter(var navController: NavController, username: String, length: Int)
     :RecyclerView.Adapter<CategoryListAdapter.MyViewHolder>()
 {
     init {
         user_name = username
+        quiz_length = length
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder
@@ -62,7 +64,7 @@ class CategoryListAdapter(var navController: NavController, username: String)
 
         init {
             itemView.setOnClickListener {
-                val action = ListFragmentDirections.actionListFragmentToGameFragment(categoryList[pos].apiInput, user_name)
+                val action = ListFragmentDirections.actionListFragmentToGameFragment(categoryList[pos].apiInput, user_name, quiz_length)
                 navController.navigate(action)
 
             }

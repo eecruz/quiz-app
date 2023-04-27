@@ -11,6 +11,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import android.widget.RadioGroup
+import android.widget.RadioButton
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -24,6 +26,9 @@ class GameFragment : Fragment()
     lateinit var scoreLabel: TextView
     lateinit var questionNumLabel: TextView
     lateinit var userAnswer: EditText
+    lateinit var rGroup: RadioGroup
+    lateinit var rb1: RadioButton
+    lateinit var rb2: RadioButton
     lateinit var questions: ArrayList<Question>
 
 
@@ -32,6 +37,7 @@ class GameFragment : Fragment()
     var questionNum: Int = 1
     var answer: String = ""
     var score: Int = 0
+    var length: Int = 10
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +51,7 @@ class GameFragment : Fragment()
 
         category = GameFragmentArgs.fromBundle(bundle).selectedCategory
         userName = GameFragmentArgs.fromBundle(bundle).userName
+        length = GameFragmentArgs.fromBundle(bundle).length
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
@@ -82,7 +89,7 @@ class GameFragment : Fragment()
                     scoreLabel.text = "Score: $score"
                     Toast.makeText(requireActivity(), "Correct!!", Toast.LENGTH_LONG).show()
                 }
-                else Toast.makeText(requireActivity(), "Incorrect :(", Toast.LENGTH_LONG).show()
+                else Toast.makeText(requireActivity(), "Incorrect, $answer was the correct answer.", Toast.LENGTH_LONG).show()
             }
             else if(!submitButton.text.equals("View Score"))
             {
@@ -128,6 +135,6 @@ class GameFragment : Fragment()
 
     private fun generateQuestions()
     {
-        viewModel.generateQuestions(category)
+        viewModel.generateQuestions(category,length)
     }
 }

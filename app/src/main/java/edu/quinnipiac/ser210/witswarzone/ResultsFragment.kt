@@ -43,6 +43,12 @@ class ResultsFragment : Fragment()
             val action = ResultsFragmentDirections.actionResultsFragmentToHighScoreFragment()
             this.findNavController().navigate(action)
         }
+        val button2 = view.findViewById<Button>(R.id.button_newQuiz)
+        button2.setOnClickListener{
+            addNewItem()
+            val action = ResultsFragmentDirections.actionResultsFragmentToListFragment(userName)
+            this.findNavController().navigate(action)
+        }
 
         return view
     }

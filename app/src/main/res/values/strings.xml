@@ -7,4 +7,6 @@
     <string name="homeDescription">Wit\'s Warzone is a competitive trivia game where you can compare your highscores against others in various quiz categories and lengths.</string>
     <string name="guest">Continue as guest</string>
     <string name="enter">Enter</string>
+    <string name="view_scores">View Scores</string>
+    <string name="new_quiz">New Quiz</string>
 </resources>

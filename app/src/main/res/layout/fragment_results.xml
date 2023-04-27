@@ -6,10 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".ResultsFragment">
 
-    <Button
-        android:id="@+id/button_viewScore"
-        android:text="View Scores"
-        android:layout_width="wrap_content"
+    <RadioGroup
+        android:id="@+id/resultsRadioGroup"
         android:layout_height="wrap_content"
-        android:layout_gravity="center" />
+        android:layout_width="match_parent"
+        android:layout_gravity="center">
+        <Button
+            android:id="@+id/button_viewScore"
+            android:text="@string/view_scores"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+
+        <Button
+            android:id="@+id/button_newQuiz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/new_quiz" />
+    </RadioGroup>
+
 </FrameLayout>

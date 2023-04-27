@@ -78,11 +78,6 @@ class GameFragment : Fragment()
                 val isCorrect: Boolean = userAnswer.text.toString().lowercase().trim()
                     .equals(answer)
 
-                questionLabel.text = nextQuestion.question
-                questionNumLabel.text = "Question $displayNum out of ${questions.size}"
-                answer = nextQuestion.answer.lowercase().trim()
-                questionNum++
-
                 if (isCorrect)
                 {
                     score++
@@ -90,6 +85,11 @@ class GameFragment : Fragment()
                     Toast.makeText(requireActivity(), "Correct!!", Toast.LENGTH_LONG).show()
                 }
                 else Toast.makeText(requireActivity(), "Incorrect, $answer was the correct answer.", Toast.LENGTH_LONG).show()
+
+                questionLabel.text = nextQuestion.question
+                questionNumLabel.text = "Question $displayNum out of ${questions.size}"
+                answer = nextQuestion.answer.lowercase().trim()
+                questionNum++
             }
             else if(!submitButton.text.equals("View Score"))
             {

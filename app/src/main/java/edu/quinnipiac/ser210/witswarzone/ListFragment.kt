@@ -5,10 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.RadioGroup
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -19,7 +17,7 @@ class ListFragment : Fragment() {
     lateinit var rGroup: RadioGroup
 
     var username: String = "Guest"
-    var length: Int = 10
+    var length: Int = 5
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,7 +44,7 @@ class ListFragment : Fragment() {
         rGroup.setOnCheckedChangeListener {_,checkedId ->
             rGroup.check(checkedId)
             length = when (rGroup.checkedRadioButtonId) {
-                R.id.radio10 -> { 10 }
+                R.id.radio5 -> { 5 }
                 R.id.radio15 -> { 15 }
                 else -> { 30 }
             }

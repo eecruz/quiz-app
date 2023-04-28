@@ -54,7 +54,7 @@ class HighScoreDaoTest {
     @Test
     @Throws(Exception::class)
     fun daoGetAllHighScores_returnsAllHighScoresFromDB() = runBlocking {
-        addOneHighScoreToDb()
+        addTwoHighScoresToDb()
         val allHighScores = highScoreDao.getAllScores().first()
         Assert.assertEquals(allHighScores[0],highScore1)
         Assert.assertEquals(allHighScores[1],highscore2)

@@ -43,7 +43,7 @@ class HighScoreDaoTest {
     fun daoInsert_insertsHighScoreIntoDB() = runBlocking {
         addOneHighScoreToDb()
         val allHighScores = highScoreDao.getAllScores().first()
-        assertEquals(allHighScores, highScore1)
+        assertEquals(allHighScores[0], highScore1)
     }
     @Test
     @Throws(Exception::class)

@@ -11,24 +11,29 @@ import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import edu.quinnipiac.ser210.witswarzone.databinding.FragmentHighScoreBinding
+import edu.quinnipiac.ser210.witswarzone.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
     lateinit var editText: EditText
     lateinit var image: ImageView
 
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
     {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_home, container, false)
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        editText = view.findViewById(R.id.usernameInput)
-        image = view.findViewById(R.id.imageView)
+        editText = _binding!!.usernameInput
+        image = _binding!!.imageView
 
         image.setImageResource(R.drawable.wwlogo)
 
         var username = "Guest"
 
-        val buttonGo = view.findViewById<Button>(R.id.button_go)
+        val buttonGo = _binding!!.buttonGo
         buttonGo.setOnClickListener{
             if(editText.text.trim().isNotBlank()) {
                 username = editText.text.toString()
@@ -40,13 +45,18 @@ class HomeFragment : Fragment() {
                     Toast.LENGTH_LONG).show()
         }
 
-        val buttonGuest = view.findViewById<Button>(R.id.btn_guest)
+        val buttonGuest = _binding!!.btnGuest
         buttonGuest.setOnClickListener{
             //Log.d("TAG", username)
             val action = HomeFragmentDirections.actionHomeFragmentToListFragment(username)
             this.findNavController().navigate(action)
         }
 
-        return view
+        return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

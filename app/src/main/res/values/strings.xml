@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">WitsWarzone</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="logo">Wit\'s Warzone Logo</string>
     <string name="username">Username</string>
     <string name="homeDescription">Wit\'s Warzone is a competitive trivia game where you can compare your highscores against others in various quiz categories and lengths.</string>
@@ -10,4 +8,5 @@
     <string name="view_scores">View Scores</string>
     <string name="new_quiz">New Quiz</string>
     <string name="help_text">Choose a category and the length of your quiz and test your knowledge! After completing a quiz, check your results and see how you stack up with other players. This is Wits Warzone!</string>
+    <string name="emilio_bio">Hey! My name is Emilio, and I\'m one of the two masterminds behind WitsWarzone! As of 2023, I am finishing up my third year of university in the BS Computer Science degree program at Quinnipiac University. Why are you still reading this? Get out there and prove yourself in the WitsWarzone!!</string>
 </resources>

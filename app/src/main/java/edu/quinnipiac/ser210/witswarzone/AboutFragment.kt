@@ -25,7 +25,7 @@ class AboutFragment : Fragment()
 
         emilioImage.setImageResource(R.drawable.emilio_dev_pic)
         //billyImage.setImageResource(R.drawable.____________)
-        //emilioBio.text = ___________
+        emilioBio.text = getString(R.string.emilio_bio)
         //billyBio.text = ___________
 
         return binding.root

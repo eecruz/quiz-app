@@ -45,6 +45,7 @@
                     android:id="@+id/emilio_image"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
+                    android:layout_gravity="center_vertical"
                     android:importantForAccessibility="no"
                     android:scaleType="centerCrop" />
 
@@ -72,6 +73,7 @@
                     android:id="@+id/billy_image"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
+                    android:layout_gravity="center_vertical"
                     android:importantForAccessibility="no"
                     android:scaleType="centerCrop" />
 

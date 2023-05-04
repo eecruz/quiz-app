@@ -21,6 +21,7 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import edu.quinnipiac.ser210.witswarzone.databinding.FragmentGameBinding
 
 class GameFragment : Fragment()
 {
@@ -33,7 +34,6 @@ class GameFragment : Fragment()
     lateinit var timer: Chronometer
     lateinit var questions: ArrayList<Question>
     lateinit var pauseBtn: Button
-    lateinit var pauseView: View
 
 
     var userName: String = "Guest"
@@ -42,6 +42,9 @@ class GameFragment : Fragment()
     var answer: String = ""
     var score: Int = 0
     var length: Int = 10
+
+    private var _binding: FragmentGameBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,18 +63,18 @@ class GameFragment : Fragment()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
     {
-        val view = inflater.inflate(R.layout.fragment_game, container, false)
+        _binding = FragmentGameBinding.inflate(inflater, container, false)
 
         initViewModel()
         generateQuestions()
 
-        submitButton = view.findViewById(R.id.submit_button)
-        questionLabel = view.findViewById(R.id.question_label)
-        scoreLabel = view.findViewById(R.id.score_label)
-        userAnswer = view.findViewById(R.id.userAnswer)
-        questionNumLabel = view.findViewById(R.id.question_number_label)
-        pauseBtn = view.findViewById(R.id.pauseBtn)
-        timer = view.findViewById(R.id.gameTimer)
+        submitButton = _binding!!.submitButton
+        questionLabel = _binding!!.questionLabel
+        scoreLabel = _binding!!.scoreLabel
+        userAnswer = _binding!!.userAnswer
+        questionNumLabel = _binding!!.questionNumberLabel
+        pauseBtn = _binding!!.pauseBtn
+        timer = _binding!!.gameTimer
         timer.start()
 
         fun onPausePressed(state: Boolean) {
@@ -141,7 +144,7 @@ class GameFragment : Fragment()
             userAnswer.setText("")
         }
 
-        return view
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -155,6 +158,11 @@ class GameFragment : Fragment()
             questionNumLabel.text = "Question 1 out of ${questions.size}"
             answer = questions[0].answer.lowercase().trim()
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun initViewModel()

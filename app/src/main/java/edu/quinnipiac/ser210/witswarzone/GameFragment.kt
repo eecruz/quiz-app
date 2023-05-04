@@ -1,10 +1,8 @@
 package edu.quinnipiac.ser210.witswarzone
 
-import android.annotation.SuppressLint
-import android.graphics.Color
+import android.opengl.Visibility
 import android.os.Bundle
 import android.os.SystemClock
-import android.text.Editable
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -15,8 +13,6 @@ import android.widget.Chronometer
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import android.widget.RadioGroup
-import android.widget.RadioButton
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -34,6 +30,7 @@ class GameFragment : Fragment()
     lateinit var timer: Chronometer
     lateinit var questions: ArrayList<Question>
     lateinit var pauseBtn: Button
+    lateinit var answerLabel: TextView
 
 
     var userName: String = "Guest"
@@ -42,6 +39,8 @@ class GameFragment : Fragment()
     var answer: String = ""
     var score: Int = 0
     var length: Int = 10
+    var answerLabelVisible: Boolean = false
+    var answerBoxVisible: Boolean = true
 
     private var _binding: FragmentGameBinding? = null
     private val binding get() = _binding!!
@@ -71,6 +70,7 @@ class GameFragment : Fragment()
         submitButton = _binding!!.submitButton
         questionLabel = _binding!!.questionLabel
         scoreLabel = _binding!!.scoreLabel
+        answerLabel = _binding!!.answerLabel
         userAnswer = _binding!!.userAnswer
         questionNumLabel = _binding!!.questionNumberLabel
         pauseBtn = _binding!!.pauseBtn
@@ -80,11 +80,13 @@ class GameFragment : Fragment()
         fun onPausePressed(state: Boolean) {
             if(state) {
                 questionLabel.isVisible = true
-                userAnswer.isVisible = true
+                userAnswer.isVisible = answerBoxVisible
+                answerLabel.isVisible = answerLabelVisible
                 submitButton.isVisible = true
             } else {
                 questionLabel.isVisible = false
                 userAnswer.isVisible = false
+                answerLabel.isVisible = false
                 submitButton.isVisible = false
             }
         }
@@ -117,29 +119,86 @@ class GameFragment : Fragment()
                 val isCorrect: Boolean = userAnswer.text.toString().lowercase().trim()
                     .equals(answer)
 
-                if (isCorrect)
+                if(submitButton.text.equals("Continue"))
+                {
+                    questionLabel.text = nextQuestion.question
+                    questionNumLabel.text = "Question $displayNum out of ${questions.size}"
+                    answer = nextQuestion.answer.lowercase().trim()
+                    questionNum++
+                    userAnswer.isVisible = true
+                    answerBoxVisible = true
+                    answerLabel.isVisible = false
+                    answerLabelVisible = false
+                    submitButton.text = "Submit"
+                }
+
+                else if (isCorrect)
                 {
                     score++
                     scoreLabel.text = "Score: $score"
-                    Toast.makeText(requireActivity(), "Correct!!", Toast.LENGTH_LONG).show()
+                    answerLabel.isVisible = true
+                    answerLabelVisible = true
+                    userAnswer.isVisible = false
+                    answerBoxVisible = false
+                    answerLabel.text = "Correct!"
+                    submitButton.text = "Continue"
                 }
-                else Toast.makeText(requireActivity(), "Incorrect, $answer was the correct answer.", Toast.LENGTH_LONG).show()
-
-                questionLabel.text = nextQuestion.question
-                questionNumLabel.text = "Question $displayNum out of ${questions.size}"
-                answer = nextQuestion.answer.lowercase().trim()
-                questionNum++
+                else
+                {
+                    answerLabel.isVisible = true
+                    answerLabelVisible = true
+                    userAnswer.isVisible = false
+                    answerBoxVisible = false
+                    answerLabel.text = "Incorrect! The correct answer was $answer"
+                    submitButton.text = "Continue"
+                }
             }
-            else if(!submitButton.text.equals("View Score"))
+            else if(questionNum == questions.size)
+            {
+                val isCorrect: Boolean = userAnswer.text.toString().lowercase().trim()
+                    .equals(answer)
+
+                if (isCorrect)
+                {
+                    score++
+                    questionNum++
+                    scoreLabel.text = "Score: $score"
+                    submitButton.text = "Finish"
+                    answerLabel.isVisible = true
+                    answerLabelVisible = true
+                    userAnswer.isVisible = false
+                    answerBoxVisible = false
+                    answerLabel.text = "Correct!"
+                }
+                else
+                {
+                    answerLabel.isVisible = true
+                    answerLabelVisible = true
+                    userAnswer.isVisible = false
+                    answerBoxVisible = false
+                    answerLabel.text = "Incorrect! The correct answer was $answer"
+                    submitButton.text = "Finish"
+                    questionNum++
+                }
+            }
+            else if(submitButton.text.equals("View Score"))
+            {
+                val action = GameFragmentDirections.actionGameFragmentToResultsFragment(userName, score, questions.size,
+                    timer.text as String)
+                this.findNavController().navigate(action)
+            }
+            else if(submitButton.text.equals("Finish"))
             {
                 questionLabel.text = "Quiz Done!! Click button to view results."
                 submitButton.text = "View Score"
+                questionNum++
                 userAnswer.isVisible = false
-            }
-            else
-            {
-                val action = GameFragmentDirections.actionGameFragmentToResultsFragment(userName, score)
-                this.findNavController().navigate(action)
+                answerBoxVisible = false
+                answerLabel.isVisible = false
+                answerLabelVisible = false
+                pauseBtn.isEnabled = false
+                timerRunning = false
+                timer.stop()
             }
             userAnswer.setText("")
         }

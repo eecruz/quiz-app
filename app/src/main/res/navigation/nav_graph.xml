@@ -9,7 +9,7 @@
     <fragment
         android:id="@+id/gameFragment"
         android:name="edu.quinnipiac.ser210.witswarzone.GameFragment"
-        android:label="fragment_game"
+        android:label="Quiz"
         tools:layout="@layout/fragment_game" >
         <argument
             android:name="selected_category"
@@ -30,7 +30,7 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="edu.quinnipiac.ser210.witswarzone.HomeFragment"
-        android:label="fragment_home"
+        android:label="Home"
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_listFragment"
@@ -39,7 +39,7 @@
     <fragment
         android:id="@+id/listFragment"
         android:name="edu.quinnipiac.ser210.witswarzone.ListFragment"
-        android:label="fragment_list"
+        android:label="Categories"
         tools:layout="@layout/fragment_list" >
         <action
             android:id="@+id/action_listFragment_to_gameFragment"
@@ -52,7 +52,7 @@
     <fragment
         android:id="@+id/resultsFragment"
         android:name="edu.quinnipiac.ser210.witswarzone.ResultsFragment"
-        android:label="fragment_results"
+        android:label="Results"
         tools:layout="@layout/fragment_results" >
         <action
             android:id="@+id/action_resultsFragment_to_highScoreFragment"
@@ -65,12 +65,33 @@
             android:name="score"
             app:argType="integer"
             android:defaultValue="0" />
+        <argument
+            android:name="total_questions"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="time"
+            app:argType="string"
+            android:defaultValue="0:00" />
         <action
             android:id="@+id/action_resultsFragment_to_listFragment"
             app:destination="@id/listFragment" />
+        <action
+            android:id="@+id/action_resultsFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/highScoreFragment"
         android:name="edu.quinnipiac.ser210.witswarzone.HighScoreFragment"
-        android:label="HighScoreFragment" />
+        android:label="Score" />
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="edu.quinnipiac.ser210.witswarzone.AboutFragment"
+        android:label="About"
+        tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/helpFragment"
+        android:name="edu.quinnipiac.ser210.witswarzone.HelpFragment"
+        android:label="Help"
+        tools:layout="@layout/fragment_help" />
 </navigation>

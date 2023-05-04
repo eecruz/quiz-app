@@ -9,4 +9,5 @@
     <string name="enter">Enter</string>
     <string name="view_scores">View Scores</string>
     <string name="new_quiz">New Quiz</string>
+    <string name="help_text">Choose a category and the length of your quiz and test your knowledge! After completing a quiz, check your results and see how you stack up with other players. This is Wits Warzone!</string>
 </resources>

@@ -9,6 +9,8 @@ import android.widget.RadioGroup
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import edu.quinnipiac.ser210.witswarzone.databinding.FragmentHomeBinding
+import edu.quinnipiac.ser210.witswarzone.databinding.FragmentListBinding
 
 class ListFragment : Fragment() {
 
@@ -18,6 +20,9 @@ class ListFragment : Fragment() {
 
     var username: String = "Guest"
     var length: Int = 5
+
+    private var _binding: FragmentListBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,15 +37,15 @@ class ListFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
     {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_list, container, false)
+        _binding = FragmentListBinding.inflate(inflater, container, false)
 
-        return view
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)
     {
         super.onViewCreated(view, savedInstanceState)
-        rGroup = view.findViewById(R.id.lengthRadioGroup)
+        rGroup = _binding!!.lengthRadioGroup
         rGroup.setOnCheckedChangeListener {_,checkedId ->
             rGroup.check(checkedId)
             length = when (rGroup.checkedRadioButtonId) {
@@ -50,12 +55,17 @@ class ListFragment : Fragment() {
             }
             updateLength(view,length)
         }
-        recyclerView = view.findViewById(R.id.recyclerview)
+        recyclerView = _binding!!.recyclerview
         recyclerAdapter = CategoryListAdapter(Navigation.findNavController(view), username, length)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = recyclerAdapter
 
         recyclerAdapter.setCategoryListItems()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun updateLength(view: View, newLength: Int) {

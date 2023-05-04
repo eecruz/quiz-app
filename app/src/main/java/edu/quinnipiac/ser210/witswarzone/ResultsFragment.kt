@@ -9,11 +9,15 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import edu.quinnipiac.ser210.witswarzone.databinding.FragmentResultsBinding
 
 class ResultsFragment : Fragment()
 {
     var userName: String = "Guest"
     var score: Int = 0
+
+    private var _binding: FragmentResultsBinding? = null
+    private val binding get() = _binding!!
 
     private val viewModel: ScoreViewModel by activityViewModels {
         ScoreViewModelFactory(
@@ -35,22 +39,27 @@ class ResultsFragment : Fragment()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
     {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_results, container, false)
+        _binding = FragmentResultsBinding.inflate(inflater, container, false)
 
-        val button = view.findViewById<Button>(R.id.button_viewScore)
-        button.setOnClickListener{
+        val viewScoreButton = _binding!!.buttonViewScore
+        viewScoreButton.setOnClickListener{
             addNewItem()
             val action = ResultsFragmentDirections.actionResultsFragmentToHighScoreFragment()
             this.findNavController().navigate(action)
         }
-        val button2 = view.findViewById<Button>(R.id.button_newQuiz)
-        button2.setOnClickListener{
+        val newQuizButton = _binding!!.buttonNewQuiz
+        newQuizButton.setOnClickListener{
             addNewItem()
             val action = ResultsFragmentDirections.actionResultsFragmentToListFragment(userName)
             this.findNavController().navigate(action)
         }
 
-        return view
+        return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun isEntryValid(): Boolean

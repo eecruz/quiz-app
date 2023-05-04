@@ -1,6 +1,9 @@
 package edu.quinnipiac.ser210.witswarzone
 
+import android.annotation.SuppressLint
+import android.graphics.Color
 import android.os.Bundle
+import android.os.SystemClock
 import android.text.Editable
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -8,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Chronometer
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
@@ -26,10 +30,10 @@ class GameFragment : Fragment()
     lateinit var scoreLabel: TextView
     lateinit var questionNumLabel: TextView
     lateinit var userAnswer: EditText
-    lateinit var rGroup: RadioGroup
-    lateinit var rb1: RadioButton
-    lateinit var rb2: RadioButton
+    lateinit var timer: Chronometer
     lateinit var questions: ArrayList<Question>
+    lateinit var pauseBtn: Button
+    lateinit var pauseView: View
 
 
     var userName: String = "Guest"
@@ -66,6 +70,38 @@ class GameFragment : Fragment()
         scoreLabel = view.findViewById(R.id.score_label)
         userAnswer = view.findViewById(R.id.userAnswer)
         questionNumLabel = view.findViewById(R.id.question_number_label)
+        pauseBtn = view.findViewById(R.id.pauseBtn)
+        timer = view.findViewById(R.id.gameTimer)
+        timer.start()
+
+        fun onPausePressed(state: Boolean) {
+            if(state) {
+                questionLabel.isVisible = true
+                userAnswer.isVisible = true
+                submitButton.isVisible = true
+            } else {
+                questionLabel.isVisible = false
+                userAnswer.isVisible = false
+                submitButton.isVisible = false
+            }
+        }
+
+        var timerRunning = true
+        var diff: Long = 0
+        pauseBtn.setOnClickListener{
+            if(timerRunning) {
+                diff = timer.base - SystemClock.elapsedRealtime()
+                timer.stop()
+                pauseBtn.text = "▷"
+                timerRunning = false
+            } else {
+                timer.base = SystemClock.elapsedRealtime() + diff
+                timer.start()
+                pauseBtn.text = "||"
+                timerRunning = true
+            }
+            onPausePressed(timerRunning)
+        }
 
         scoreLabel.text = "Score: $score"
 

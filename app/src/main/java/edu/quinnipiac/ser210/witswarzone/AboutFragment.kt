@@ -24,9 +24,9 @@ class AboutFragment : Fragment()
         val billyBio = _binding!!.billyBio
 
         emilioImage.setImageResource(R.drawable.emilio_dev_pic)
-        //billyImage.setImageResource(R.drawable.____________)
+        billyImage.setImageResource(R.drawable.billy_dev_pic)
         emilioBio.text = getString(R.string.emilio_bio)
-        //billyBio.text = ___________
+        billyBio.text = getString(R.string.billy_bio)
 
         return binding.root
     }

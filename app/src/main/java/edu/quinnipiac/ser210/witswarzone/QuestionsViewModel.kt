@@ -1,3 +1,9 @@
+/*
+    App:   WITSWARZONE
+    Names: Emilio Cruz, William Siri
+    Date: May 2023
+ */
+
 package edu.quinnipiac.ser210.witswarzone
 
 import androidx.lifecycle.MutableLiveData
@@ -6,6 +12,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+// view model for question retrieval from API
 class QuestionsViewModel: ViewModel() {
     var questionsLiveData: MutableLiveData<ArrayList<Question>?> = MutableLiveData()
     var triviaQuestions: TriviaQuestions = TriviaQuestions(ArrayList(1))

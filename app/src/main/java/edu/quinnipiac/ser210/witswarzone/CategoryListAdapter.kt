@@ -1,3 +1,9 @@
+/*
+    App:   WITSWARZONE
+    Names: Emilio Cruz, William Siri
+    Date: May 2023
+ */
+
 package edu.quinnipiac.ser210.witswarzone
 
 import android.view.LayoutInflater
@@ -12,6 +18,7 @@ var categoryList : ArrayList<Category> = ArrayList()
 var user_name: String = "Guest"
 var quiz_length: Int = 10
 
+// recycle adapter for ListFragment
 class CategoryListAdapter(var navController: NavController, username: String, length: Int)
     :RecyclerView.Adapter<CategoryListAdapter.MyViewHolder>()
 {
@@ -38,6 +45,7 @@ class CategoryListAdapter(var navController: NavController, username: String, le
 
     fun setCategoryListItems()
     {
+        // populates list with categories
         categoryList.add(Category.GENERAL)
         categoryList.add(Category.ARTLITERATURE)
         categoryList.add(Category.LANGUAGE)
@@ -71,6 +79,7 @@ class CategoryListAdapter(var navController: NavController, username: String, le
         }
         fun bind(position:Int)
         {
+            // sets UI properties of each category card view
             pos = position
             val category = categoryList[position]
             categoryLabel.text = category.display

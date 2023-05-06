@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--    App:   WITSWARZONE-->
+<!--    Names: Emilio Cruz, William Siri-->
+<!--    Date: May 2023-->
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -34,19 +39,19 @@
             android:id="@+id/radio5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="5 Questions" />
+            android:text="@string/questions_5" />
 
         <RadioButton
             android:id="@+id/radio15"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="15 Questions"/>
+            android:text="@string/questions_15"/>
 
         <RadioButton
             android:id="@+id/radio30"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="30 Questions"/>
+            android:text="@string/questions_30"/>
     </RadioGroup>
 
     <androidx.recyclerview.widget.RecyclerView

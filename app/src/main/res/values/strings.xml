@@ -10,4 +10,23 @@
     <string name="help_text">Choose a category and the length of your quiz and test your knowledge! After completing a quiz, check your results and see how you stack up with other players. This is Wits Warzone!</string>
     <string name="emilio_bio">Hey! My name is Emilio, and I\'m one of the two masterminds behind WitsWarzone! As of 2023, I am finishing up my third year of university in the BS Computer Science degree program at Quinnipiac University. Why are you still reading this? Get out there and prove yourself in the WitsWarzone!!</string>
     <string name="billy_bio">Hi! My name is Billy, and I\'m the second developer behind the popular trivia game, WitsWarzone! I am currently finishing up my Junior Year, pursuing a BS in Software Engineering at Quinnipiac University as of 2023. Who am I kidding? You don\'t want to read this. Go play!</string>
+    <string name="results">Results!</string>
+    <string name="score_results">Score: 0/0</string>
+    <string name="time_results">Time: 0:00</string>
+    <string name="home">Home</string>
+    <string name="play_again">Play Again</string>
+    <string name="questions_5">5 Questions</string>
+    <string name="questions_15">15 Questions</string>
+    <string name="questions_30">30 Questions</string>
+    <string name="high_scores_text">High Scores\n</string>
+    <string name="clear_scores">Clear Scores</string>
+    <string name="help">Help</string>
+    <string name="question_game">Question 0 of 0</string>
+    <string name="submit">Submit</string>
+    <string name="answer_hint">Enter your answer</string>
+    <string name="pause">||</string>
+    <string name="question_text">Question</string>
+    <string name="score_display">Score: 0</string>
+    <string name="about_devs">About the Developers</string>
+    <string name="about">About</string>
 </resources>

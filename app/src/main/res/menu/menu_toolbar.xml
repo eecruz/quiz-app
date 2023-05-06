@@ -6,18 +6,18 @@
     <item
         android:id="@+id/homeFragment"
         android:icon="@android:drawable/title_bar"
-        android:title="Home"
+        android:title="@string/home"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/helpFragment"
         android:icon="@android:drawable/ic_menu_help"
-        android:title="Help"
+        android:title="@string/help"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/aboutFragment"
         android:icon="@android:drawable/ic_menu_info_details"
-        android:title="About"
+        android:title="@string/about"
         app:showAsAction="always" />
 </menu>

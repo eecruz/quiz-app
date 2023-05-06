@@ -1,3 +1,9 @@
+/*
+    App:   WITSWARZONE
+    Names: Emilio Cruz, William Siri
+    Date: May 2023
+ */
+
 package edu.quinnipiac.ser210.witswarzone
 
 import android.os.Bundle
@@ -35,6 +41,7 @@ class HomeFragment : Fragment() {
 
         val buttonGo = _binding!!.buttonGo
         buttonGo.setOnClickListener{
+            // ensure name has been entered
             if(editText.text.trim().isNotBlank()) {
                 username = editText.text.toString()
                 val action = HomeFragmentDirections.actionHomeFragmentToListFragment(username)
@@ -45,6 +52,7 @@ class HomeFragment : Fragment() {
                     Toast.LENGTH_LONG).show()
         }
 
+        // navigate to ListFragment passing default "Guest" username
         val buttonGuest = _binding!!.btnGuest
         buttonGuest.setOnClickListener{
             //Log.d("TAG", username)

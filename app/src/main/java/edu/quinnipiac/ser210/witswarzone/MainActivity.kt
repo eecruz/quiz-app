@@ -1,3 +1,9 @@
+/*
+    App:   WITSWARZONE
+    Names: Emilio Cruz, William Siri
+    Date: May 2023
+ */
+
 package edu.quinnipiac.ser210.witswarzone
 
 import android.os.Bundle
@@ -19,6 +25,7 @@ class MainActivity : AppCompatActivity()
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(_binding.root)
 
+        // init toolbar
         setSupportActionBar(_binding.toolbar)
         supportActionBar?.title = ""
 
@@ -31,12 +38,6 @@ class MainActivity : AppCompatActivity()
         _binding.toolbar.setupWithNavController(navController, appBarConfiguration)
         _binding.bottomNav.setupWithNavController(navController)
     }
-
-//    override fun onCreateOptionsMenu(menu: Menu?): Boolean
-//    {
-//        menuInflater.inflate(R.menu.menu_toolbar, menu)
-//        return super.onCreateOptionsMenu(menu)
-//    }
 
     // navigates to specified fragment from menu option
     override fun onOptionsItemSelected(item: MenuItem): Boolean

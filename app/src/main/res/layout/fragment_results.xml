@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--    App:   WITSWARZONE-->
+<!--    Names: Emilio Cruz, William Siri-->
+<!--    Date: May 2023-->
+
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -12,7 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Results!"
+        android:text="@string/results"
         android:textColor="@color/black"
         android:textSize="35sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,7 +38,7 @@
         android:id="@+id/score_results_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Score: 0/0"
+        android:text="@string/score_results"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -45,7 +50,7 @@
         android:id="@+id/time_results_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Time: 0:00"
+        android:text="@string/time_results"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -58,7 +63,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
-        android:text="Home"
+        android:text="@string/home"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.28"
         app:layout_constraintStart_toStartOf="parent"
@@ -82,11 +87,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="2dp"
-        android:text="Play Again"
+        android:text="@string/play_again"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.68"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_viewScore" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

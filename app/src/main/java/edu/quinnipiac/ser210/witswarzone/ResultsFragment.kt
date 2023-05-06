@@ -1,3 +1,9 @@
+/*
+    App:   WITSWARZONE
+    Names: Emilio Cruz, William Siri
+    Date: May 2023
+ */
+
 package edu.quinnipiac.ser210.witswarzone
 
 import android.content.Context
@@ -36,6 +42,7 @@ class ResultsFragment : Fragment()
         if (bundle == null)
             return
 
+        // set params from args
         userName = ResultsFragmentArgs.fromBundle(bundle).userName
         score = ResultsFragmentArgs.fromBundle(bundle).score
         totalQuestions = ResultsFragmentArgs.fromBundle(bundle).totalQuestions
@@ -56,6 +63,7 @@ class ResultsFragment : Fragment()
         timeLabel.text = "Time: $time"
         scoreLabel.text = "Score: $score/$totalQuestions"
 
+        // determine and display correct medal
         if(score.toDouble() / totalQuestions > 0.85)
             medal.setImageResource(R.drawable.gold_medal)
         else if(score.toDouble() / totalQuestions > 0.70)
@@ -63,6 +71,7 @@ class ResultsFragment : Fragment()
         else
             medal.setImageResource(R.drawable.bronze_medal)
 
+        // button click listeners
         homeButton.setOnClickListener {
             val action = ResultsFragmentDirections.actionResultsFragmentToHomeFragment()
             this.findNavController().navigate(action)
@@ -92,11 +101,6 @@ class ResultsFragment : Fragment()
     {
         return (viewModel.isEntryValid(userName, score.toString()) && score != 0)
     }
-
-//    private fun getScoreList(): List<HighScore>
-//    {
-//        return (viewModel.allScores)
-//    }
 
     private fun addNewItem()
     {

@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--    App:   WITSWARZONE-->
+<!--    Names: Emilio Cruz, William Siri-->
+<!--    Date: May 2023-->
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -17,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="High Scores\n"
+            android:text="@string/high_scores_text"
             android:textColor="#000000"
             android:textSize="35sp" />
 
@@ -26,7 +31,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Clear Scores" />
+            android:text="@string/clear_scores" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

@@ -1,3 +1,9 @@
+/*
+    App:   WITSWARZONE
+    Names: Emilio Cruz, William Siri
+    Date: May 2023
+ */
+
 package edu.quinnipiac.ser210.witswarzone
 
 import android.os.Bundle
@@ -20,6 +26,7 @@ class HighScoreFragment : Fragment()
     private var _binding: FragmentHighScoreBinding? = null
     private val binding get() = _binding!!
 
+    // initialize viewModel for database fetch
     private val viewModel: ScoreViewModel by activityViewModels {
         ScoreViewModelFactory(
             (activity?.application as HighScoreApplication).database.highScoreDao()

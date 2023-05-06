@@ -1,3 +1,9 @@
+/*
+    App:   WITSWARZONE
+    Names: Emilio Cruz, William Siri
+    Date: May 2023
+ */
+
 package edu.quinnipiac.ser210.witswarzone
 
 import android.opengl.Visibility
@@ -55,6 +61,7 @@ class GameFragment : Fragment()
             return
         }
 
+        // set param values from args
         category = GameFragmentArgs.fromBundle(bundle).selectedCategory
         userName = GameFragmentArgs.fromBundle(bundle).userName
         length = GameFragmentArgs.fromBundle(bundle).length
@@ -77,6 +84,7 @@ class GameFragment : Fragment()
         timer = _binding!!.gameTimer
         timer.start()
 
+        // hide/show question on pause toggle
         fun onPausePressed(state: Boolean) {
             if(state) {
                 questionLabel.isVisible = true
@@ -93,6 +101,8 @@ class GameFragment : Fragment()
 
         var timerRunning = true
         var diff: Long = 0
+
+        // update pause button display and start/stop timer
         pauseBtn.setOnClickListener{
             if(timerRunning) {
                 diff = timer.base - SystemClock.elapsedRealtime()
@@ -110,6 +120,7 @@ class GameFragment : Fragment()
 
         scoreLabel.text = "Score: $score"
 
+        // handle answer submission
         submitButton.setOnClickListener{
 
             if(questionNum < questions.size)
@@ -119,7 +130,7 @@ class GameFragment : Fragment()
                 val isCorrect: Boolean = userAnswer.text.toString().lowercase().trim()
                     .equals(answer)
 
-                if(submitButton.text.equals("Continue"))
+                if(submitButton.text.equals("Continue")) // increment question and associated variables
                 {
                     questionLabel.text = nextQuestion.question
                     questionNumLabel.text = "Question $displayNum out of ${questions.size}"
@@ -132,7 +143,7 @@ class GameFragment : Fragment()
                     submitButton.text = "Submit"
                 }
 
-                else if (isCorrect)
+                else if (isCorrect) // hide submission box, increment score, update button text
                 {
                     score++
                     scoreLabel.text = "Score: $score"
@@ -143,7 +154,7 @@ class GameFragment : Fragment()
                     answerLabel.text = "Correct!"
                     submitButton.text = "Continue"
                 }
-                else
+                else // show answer, hide submission box, update button text
                 {
                     answerLabel.isVisible = true
                     answerLabelVisible = true
@@ -153,7 +164,7 @@ class GameFragment : Fragment()
                     submitButton.text = "Continue"
                 }
             }
-            else if(questionNum == questions.size)
+            else if(questionNum == questions.size) // last question
             {
                 val isCorrect: Boolean = userAnswer.text.toString().lowercase().trim()
                     .equals(answer)
@@ -181,13 +192,13 @@ class GameFragment : Fragment()
                     questionNum++
                 }
             }
-            else if(submitButton.text.equals("View Score"))
+            else if(submitButton.text.equals("View Score")) // finish quiz and navigate to results
             {
                 val action = GameFragmentDirections.actionGameFragmentToResultsFragment(userName, score, questions.size,
                     timer.text as String)
                 this.findNavController().navigate(action)
             }
-            else if(submitButton.text.equals("Finish"))
+            else if(submitButton.text.equals("Finish")) // handle last question submission
             {
                 questionLabel.text = "Quiz Done!! Click button to view results."
                 submitButton.text = "View Score"

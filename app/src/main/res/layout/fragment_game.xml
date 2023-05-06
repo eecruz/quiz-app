@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--    App:   WITSWARZONE-->
+<!--    Names: Emilio Cruz, William Siri-->
+<!--    Date: May 2023-->
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -19,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="Score: 0"
+            android:text="@string/score_display"
             android:textColor="#000000"
             android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -42,7 +47,7 @@
             android:id="@+id/pauseBtn"
             android:layout_width="50dp"
             android:layout_height="55dp"
-            android:text="||"
+            android:text="@string/pause"
             android:textAlignment="center"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -69,7 +74,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
-                android:text="Question"
+                android:text="@string/question_text"
                 android:textColor="#000000"
                 android:textSize="35sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -84,7 +89,7 @@
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
-                android:hint="Enter your answer"
+                android:hint="@string/answer_hint"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -97,7 +102,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
-                android:text="Submit"
+                android:text="@string/submit"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -129,7 +134,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="76dp"
-            android:text="Question 0 of 0"
+            android:text="@string/question_game"
             android:textSize="25sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

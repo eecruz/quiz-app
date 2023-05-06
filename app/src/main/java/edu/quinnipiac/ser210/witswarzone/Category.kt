@@ -1,5 +1,12 @@
+/*
+    App:   WITSWARZONE
+    Names: Emilio Cruz, William Siri
+    Date: May 2023
+ */
+
 package edu.quinnipiac.ser210.witswarzone
 
+// enum class for categories and their pics
 enum class Category(val display: String, val apiInput: String, val drawableID: Int)
 {
     GENERAL("General", "GENERAL", R.drawable.general),

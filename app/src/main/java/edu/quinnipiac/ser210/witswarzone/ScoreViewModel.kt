@@ -1,8 +1,15 @@
+/*
+    App:   WITSWARZONE
+    Names: Emilio Cruz, William Siri
+    Date: May 2023
+ */
+
 package edu.quinnipiac.ser210.witswarzone
 
 import androidx.lifecycle.*
 import kotlinx.coroutines.launch
 
+// view model for score database manipulation
 class ScoreViewModel(private val highScoreDao: HighScoreDao): ViewModel()
 {
     val allScores: LiveData<List<HighScore>> = highScoreDao.getAllScores().asLiveData()

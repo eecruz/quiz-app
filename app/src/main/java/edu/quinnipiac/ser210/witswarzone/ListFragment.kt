@@ -1,3 +1,9 @@
+/*
+    App:   WITSWARZONE
+    Names: Emilio Cruz, William Siri
+    Date: May 2023
+ */
+
 package edu.quinnipiac.ser210.witswarzone
 
 import android.os.Bundle
@@ -45,9 +51,13 @@ class ListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)
     {
         super.onViewCreated(view, savedInstanceState)
+
+        // create and show quiz length buttons
         rGroup = _binding!!.lengthRadioGroup
         rGroup.setOnCheckedChangeListener {_,checkedId ->
             rGroup.check(checkedId)
+
+            // sets length according to button
             length = when (rGroup.checkedRadioButtonId) {
                 R.id.radio5 -> { 5 }
                 R.id.radio15 -> { 15 }

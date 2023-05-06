@@ -1,3 +1,9 @@
+/*
+    App:   WITSWARZONE
+    Names: Emilio Cruz, William Siri
+    Date: May 2023
+ */
+
 package edu.quinnipiac.ser210.witswarzone
 
 import android.view.LayoutInflater
@@ -8,6 +14,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 
+// recycle adapter for HighScoreFragment
 class ScoreAdapter: ListAdapter<HighScore, ScoreAdapter.MyViewHolder>(DiffCallback)
 {
     var scoreList: List<HighScore> = ArrayList()
@@ -42,6 +49,7 @@ class ScoreAdapter: ListAdapter<HighScore, ScoreAdapter.MyViewHolder>(DiffCallba
 
         fun bind(position: Int)
         {
+            // sets display info for each score card view
             val score = scoreList[position]
             userNameLabel.text = score.name
             userRankLabel.text = (position + 1).toString()

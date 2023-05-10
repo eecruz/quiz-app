@@ -1,5 +1,5 @@
 # SER210 "Wits Warzone" Quiz App
-<img src="https://github.com/eecruz/quiz-app/blob/master/app/src/main/res/drawable/wwlogo.PNG" width=40% height=40%>
+<img src="https://github.com/eecruz/quiz-app/blob/master/app/src/main/res/drawable/wwlogo.png" width=60% height=60%>
 
 ## What is this?
 This is an android application created for Quinnipiac's SER210 Android Development class.
